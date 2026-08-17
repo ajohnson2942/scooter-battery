@@ -1,5 +1,5 @@
 const CACHE_NAME =
-  "scooter-battery-app-v3";
+  "scooter-battery-app-v4";
 
 const ASSETS = [
   "./index.html",
