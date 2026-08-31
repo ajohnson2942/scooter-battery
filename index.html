@@ -19,232 +19,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
 <style>
-  :root{
-    --bg:#0B0F14;
-    --panel:#121922;
-    --panel-2:#0E141B;
-    --border:#22303C;
-    --text:#E8EDF2;
-    --muted:#8CA0B3;
-    --accent:#D47E30;
-    --btn-primary:#D47E30;
-    --volt:#4C9FE0;
-    --warn:#E0B84C;
-    --danger:#E0574C;
-    --radius:14px;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-    line-height:1.5;
-    padding:32px 16px 64px;
-  }
-  .app{max-width:640px;margin:0 auto}
-  header{margin-bottom:28px}
-  header .eyebrow{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:12px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--accent);
-    margin:0 0 8px;
-  }
-  header h1{font-family:'Space Grotesk',sans-serif;font-size:28px;margin:0 0 8px}
-  header p{color:var(--muted);margin:0;font-size:14.5px}
-  .card{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:20px 20px 22px;
-    margin-bottom:18px;
-  }
-  .card h2{
-    font-family:'Space Grotesk',sans-serif;
-    font-size:16px;
-    margin:0 0 4px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    flex-wrap:wrap;
-  }
-  .card .subhead{color:var(--muted);font-size:13px;margin:0 0 16px}
-  .badge{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:10.5px;
-    font-weight:500;
-    letter-spacing:.03em;
-    text-transform:uppercase;
-    color:var(--accent);
-    background:rgba(212,126,48,.1);
-    border:1px solid rgba(212,126,48,.3);
-    padding:3px 8px;
-    border-radius:100px;
-  }
-  .badge.warn{color:var(--warn);background:rgba(224,184,76,.1);border-color:rgba(224,184,76,.3)}
-  .field{margin-bottom:14px}
-  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
-  .field .hint{font-size:12px;color:var(--muted);opacity:.8;margin:6px 0 0;line-height:1.5}
-  input[type="text"],input[type="number"],select{
-    width:100%;
-    background:var(--panel-2);
-    border:1px solid var(--border);
-    color:var(--text);
-    border-radius:8px;
-    padding:10px 12px;
-    font-size:14.5px;
-    font-family:'IBM Plex Mono',monospace;
-    outline:none;
-    transition:border-color .15s ease;
-  }
-  input:focus,select:focus{border-color:var(--accent)}
-  select{font-family:'Inter',sans-serif}
-  input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-  input[type="number"]{-moz-appearance:textfield}
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  @media(max-width:480px){.row2{grid-template-columns:1fr}}
-
-  .home-actions{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin:0 0 18px;
-  }
-  .home-action{
-    min-height:88px;
-    width:100%;
-    padding:13px 10px;
-    border:1px solid var(--border);
-    border-radius:12px;
-    background:var(--panel);
-    color:var(--text);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    line-height:1.2;
-  }
-  .home-action:hover{border-color:var(--accent)}
-  .home-action-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700}
-  .home-action-subtext{margin-top:5px;font-family:'Inter',sans-serif;font-size:10.5px;font-weight:400;color:var(--muted)}
-  .install-note{
-    color:var(--muted);
-    font-size:12.5px;
-    text-align:center;
-    margin:0 0 18px;
-    line-height:1.5;
-  }
-
-  .app-page[hidden],#homePage[hidden]{display:none!important}
-  .page-topbar{
-    display:flex;
-    align-items:center;
-    margin-bottom:18px;
-  }
-  .back-button{
-    width:44px;
-    height:44px;
-    padding:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:var(--panel);
-    color:var(--text);
-    border:1px solid var(--border);
-    border-radius:12px;
-    font-size:25px;
-    line-height:1;
-  }
-  .back-button:hover{border-color:var(--accent);color:var(--accent)}
-
-  .toggle-group{display:flex;gap:8px;margin-bottom:14px}
-  .toggle-btn{
-    flex:1;
-    text-align:center;
-    padding:8px;
-    border-radius:8px;
-    border:1px solid var(--border);
-    background:var(--panel-2);
-    color:var(--muted);
-    font-size:13px;
-    cursor:pointer;
-    user-select:none;
-  }
-  .toggle-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(212,126,48,.08)}
-  button{
-    font-family:'Space Grotesk',sans-serif;
-    font-weight:500;
-    font-size:14.5px;
-    border-radius:9px;
-    border:none;
-    padding:11px 18px;
-    cursor:pointer;
-    transition:opacity .15s ease,transform .1s ease,border-color .15s ease;
-  }
-  button:active{transform:scale(.98)}
-  button.primary{background:var(--btn-primary);color:#1A0E04}
-  button.block{width:100%}
-  button.danger-outline{background:transparent;border:1px solid rgba(224,87,76,.4);color:var(--danger)}
-  .btn-row{display:flex;gap:10px;margin-top:4px;flex-wrap:wrap}
-  .btn-row button{flex:1;min-width:140px}
-  #profileStatus{font-size:12.5px;margin-top:8px;color:var(--muted)}
-
-  #results-card{text-align:center}
-  .gauge-wrap{display:flex;justify-content:center;margin:6px 0 14px}
-  .gauge-value{font-family:'IBM Plex Mono',monospace;font-size:15px;fill:var(--muted)}
-  .gauge-pct{font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:700}
-  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left;margin-top:8px}
-  .stat{background:var(--panel-2);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
-  .stat .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-  .stat .value{font-family:'IBM Plex Mono',monospace;font-size:16.5px;margin-top:3px}
-  details{margin-top:16px;text-align:left}
-  summary{cursor:pointer;font-size:13px;color:var(--muted)}
-  .breakdown{margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted)}
-  .breakdown div{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed var(--border)}
-  .banner{border-radius:10px;padding:10px 12px;font-size:13px;margin-top:14px;text-align:left}
-  .banner.warn{background:rgba(224,184,76,.1);border:1px solid rgba(224,184,76,.35);color:var(--warn)}
-  .banner.danger{background:rgba(224,87,76,.1);border:1px solid rgba(224,87,76,.35);color:var(--danger)}
-  .banner.info{background:rgba(76,159,224,.1);border:1px solid rgba(76,159,224,.35);color:var(--volt)}
-
-  .version-badge{
-    position:fixed;
-    bottom:.9rem;
-    right:.9rem;
-    z-index:20;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:.7rem;
-    color:var(--muted);
-    background:rgba(18,25,34,.85);
-    border:1px solid var(--border);
-    border-radius:6px;
-    padding:.35rem .6rem;
-    cursor:pointer;
-    user-select:none;
-  }
-  .version-popup{
-    display:none;
-    position:absolute;
-    bottom:130%;
-    right:0;
-    width:min(300px,calc(100vw - 32px));
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:.8rem .9rem;
-    font-family:'Inter',sans-serif;
-    font-size:.75rem;
-    color:var(--text);
-    line-height:1.5;
-    box-shadow:0 8px 24px rgba(0,0,0,.4);
-  }
-  .version-badge:hover .version-popup,.version-badge.active .version-popup{display:block}
-  .version-popup-title{font-family:'IBM Plex Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.5rem}
-  .version-popup ul{margin:0;padding-left:1.1rem}
-  .version-popup li{margin-bottom:.5rem}
-  .version-popup li:last-child{margin-bottom:0}
+:root{--bg:#0B0F14;--panel:#121922;--panel-2:#0E141B;--border:#22303C;--text:#E8EDF2;--muted:#8CA0B3;--accent:#D47E30;--btn-primary:#D47E30;--volt:#4C9FE0;--warn:#E0B84C;--danger:#E0574C;--radius:14px}
+*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.5;padding:32px 16px 64px}.app{max-width:640px;margin:0 auto}header{margin-bottom:28px}header .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}header h1{font-family:'Space Grotesk',sans-serif;font-size:28px;margin:0 0 8px}header p{color:var(--muted);margin:0;font-size:14.5px}.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px 20px 22px;margin-bottom:18px}.card h2{font-family:'Space Grotesk',sans-serif;font-size:16px;margin:0 0 4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.card .subhead{color:var(--muted);font-size:13px;margin:0 0 16px}.badge{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:var(--accent);background:rgba(212,126,48,.1);border:1px solid rgba(212,126,48,.3);padding:3px 8px;border-radius:100px}.badge.warn{color:var(--warn);background:rgba(224,184,76,.1);border-color:rgba(224,184,76,.3)}.field{margin-bottom:14px}.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}.field .hint{font-size:12px;color:var(--muted);opacity:.8;margin:6px 0 0;line-height:1.5}input[type="text"],input[type="number"],select{width:100%;background:var(--panel-2);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:10px 12px;font-size:14.5px;font-family:'IBM Plex Mono',monospace;outline:none;transition:border-color .15s ease}input:focus,select:focus{border-color:var(--accent)}select{font-family:'Inter',sans-serif}input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}input[type="number"]{-moz-appearance:textfield}.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:480px){.row2{grid-template-columns:1fr}}button{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14.5px;border-radius:9px;border:none;padding:11px 18px;cursor:pointer;transition:opacity .15s ease,transform .1s ease,border-color .15s ease}button:active{transform:scale(.98)}button.primary{background:var(--btn-primary);color:#1A0E04}button.block{width:100%}button.danger-outline{background:transparent;border:1px solid rgba(224,87,76,.4);color:var(--danger)}
+.home-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 18px}.home-action{min-height:88px;width:100%;padding:13px 10px;border:1px solid var(--border);border-radius:12px;background:var(--panel);color:var(--text);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.2}.home-action:hover,.secondary-home-action:hover{border-color:var(--accent)}.home-action-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700}.home-action-subtext{margin-top:5px;font-family:'Inter',sans-serif;font-size:10.5px;font-weight:400;color:var(--muted)}.install-note{color:var(--muted);font-size:12.5px;text-align:center;margin:0 0 18px;line-height:1.5}.secondary-home-action{min-height:70px;width:100%;padding:13px 10px;border:1px solid var(--border);border-radius:12px;background:var(--panel);color:var(--text);display:flex;align-items:center;justify-content:center;text-align:center;margin-bottom:18px}.app-page[hidden],#homePage[hidden]{display:none!important}.page-topbar{display:flex;align-items:center;margin-bottom:18px}.back-button{width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:12px;font-size:25px;line-height:1}.back-button:hover{border-color:var(--accent);color:var(--accent)}
+.toggle-group{display:flex;gap:8px;margin-bottom:14px}.toggle-btn{flex:1;text-align:center;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--panel-2);color:var(--muted);font-size:13px;cursor:pointer;user-select:none}.toggle-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(212,126,48,.08)}.btn-row{display:flex;gap:10px;margin-top:4px;flex-wrap:wrap}.btn-row button{flex:1;min-width:140px}#profileStatus{font-size:12.5px;margin-top:8px;color:var(--muted)}
+#results-card{text-align:center}.gauge-wrap{display:flex;justify-content:center;margin:6px 0 14px}.gauge-value{font-family:'IBM Plex Mono',monospace;font-size:15px;fill:var(--muted)}.gauge-pct{font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:700}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left;margin-top:8px}.stat{background:var(--panel-2);border:1px solid var(--border);border-radius:10px;padding:10px 12px}.stat .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.stat .value{font-family:'IBM Plex Mono',monospace;font-size:16.5px;margin-top:3px}details{margin-top:16px;text-align:left}summary{cursor:pointer;font-size:13px;color:var(--muted)}.breakdown{margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted)}.breakdown div{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed var(--border)}.banner{border-radius:10px;padding:10px 12px;font-size:13px;margin-top:14px;text-align:left}.banner.warn{background:rgba(224,184,76,.1);border:1px solid rgba(224,184,76,.35);color:var(--warn)}.banner.danger{background:rgba(224,87,76,.1);border:1px solid rgba(224,87,76,.35);color:var(--danger)}.banner.info{background:rgba(76,159,224,.1);border:1px solid rgba(76,159,224,.35);color:var(--volt)}
+.ride-total{font-family:'Space Grotesk',sans-serif;font-size:23px;font-weight:700;line-height:1.25;margin:0}.ride-total span{color:var(--accent)}.ride-list{display:grid;gap:10px}.ride-record{width:100%;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);text-align:left}.ride-record:hover{border-color:var(--accent)}.ride-record-head{display:flex;justify-content:space-between;gap:16px;align-items:center}.ride-record-title{font-family:'Space Grotesk',sans-serif;font-weight:700}.ride-record-distance{font-family:'IBM Plex Mono',monospace;color:var(--accent)}.ride-record-details{display:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;margin-top:9px;padding-top:9px;border-top:1px solid var(--border)}.ride-record.open .ride-record-details{display:block}.empty-rides{color:var(--muted);font-size:13px;text-align:center;padding:8px 0 2px}
+.version-badge{position:fixed;bottom:.9rem;right:.9rem;z-index:20;font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--muted);background:rgba(18,25,34,.85);border:1px solid var(--border);border-radius:6px;padding:.35rem .6rem;cursor:pointer;user-select:none}.version-popup{display:none;position:absolute;bottom:130%;right:0;width:min(300px,calc(100vw - 32px));background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:.8rem .9rem;font-family:'Inter',sans-serif;font-size:.75rem;color:var(--text);line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,.4)}.version-badge:hover .version-popup,.version-badge.active .version-popup{display:block}.version-popup-title{font-family:'IBM Plex Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.5rem}.version-popup ul{margin:0;padding-left:1.1rem}.version-popup li{margin-bottom:.5rem}.version-popup li:last-child{margin-bottom:0}
 </style>
 </head>
 <body>
@@ -255,7 +36,6 @@
       <h1>Electric Scooter Range &amp; Battery Estimator</h1>
       <p>Estimates scooter battery after a ride.</p>
     </header>
-
     <section class="card" id="units-card">
       <div class="field" style="margin-bottom:0">
         <label for="unitSystem">Which units would you like to use?</label>
@@ -265,409 +45,117 @@
         </select>
       </div>
     </section>
-
     <div class="home-actions">
-      <button type="button" class="home-action" id="openRidePage">
-        <span class="home-action-title">Calculate Your Ride!</span>
-      </button>
-      <button type="button" class="home-action" id="openScooterPage">
-        <span class="home-action-title">Enter your Scooter's Details here</span>
-        <span class="home-action-subtext">required to calculate your ride</span>
-      </button>
+      <button type="button" class="home-action" id="openRidePage"><span class="home-action-title">Calculate Your Ride!</span></button>
+      <button type="button" class="home-action" id="openScooterPage"><span class="home-action-title">Enter your Scooter's Details here</span><span class="home-action-subtext">required to calculate your ride</span></button>
     </div>
-
     <p class="install-note">If you would like to add this as an app to your iPhone that will work offline, open the website in Safari and press the share button, and then add to home screen.</p>
+    <button type="button" class="secondary-home-action" id="openRideTrackerPage"><span class="home-action-title">Keep Track of your Rides!</span></button>
   </div>
 
   <div class="app-page" id="ridePage" hidden>
-    <div class="page-topbar">
-      <button type="button" class="back-button" data-go-home aria-label="Back to home">←</button>
-    </div>
-
+    <div class="page-topbar"><button type="button" class="back-button" data-go-home aria-label="Back to home">←</button></div>
     <section class="card" id="trip-card">
       <h2>This ride <span class="badge warn">Not saved — cleared every visit</span></h2>
       <p class="subhead">Total ride distance and total climb can be found from Google Maps.</p>
       <form id="tripForm" autocomplete="off">
         <div class="row2">
-          <div class="field">
-            <label for="rideDistance">Total ride distance (<span class="distance-unit">mi</span>)</label>
-            <input type="number" id="rideDistance" min="0" step="0.1" autocomplete="off" />
-          </div>
-          <div class="field">
-            <label for="elevGain">Total hill climb over the ride (<span class="elevation-unit">ft</span>)</label>
-            <input type="number" id="elevGain" min="0" step="1" autocomplete="off" />
-          </div>
+          <div class="field"><label for="rideDistance">Total ride distance (<span class="distance-unit">mi</span>)</label><input type="number" id="rideDistance" min="0" step="0.1" autocomplete="off" /></div>
+          <div class="field"><label for="elevGain">Total hill climb over the ride (<span class="elevation-unit">ft</span>)</label><input type="number" id="elevGain" min="0" step="1" autocomplete="off" /></div>
         </div>
         <div class="row2">
-          <div class="field">
-            <label for="startPercent">Starting Battery (%)</label>
-            <input type="number" id="startPercent" min="0" max="100" step="1" autocomplete="off" />
-          </div>
-          <div class="field">
-            <label for="avgSpeed">Average speed (<span class="speed-unit">mph</span>)</label>
-            <input type="number" id="avgSpeed" min="1" step="1" autocomplete="off" />
-          </div>
+          <div class="field"><label for="startPercent">Starting Battery (%)</label><input type="number" id="startPercent" min="0" max="100" step="1" autocomplete="off" /></div>
+          <div class="field"><label for="avgSpeed">Average speed (<span class="speed-unit">mph</span>)</label><input type="number" id="avgSpeed" min="1" step="1" autocomplete="off" /></div>
         </div>
-        <div class="field">
-          <label for="headwind">Headwind (<span class="speed-unit">mph</span>) <span style="opacity:.7">— optional</span></label>
-          <input type="number" id="headwind" min="0" step="1" autocomplete="off" />
-          <p class="hint">If you're riding into the wind, the wind speed can be found from a weather app. Only fully accurate if you're riding directly into the headwind at this consistent wind speed; otherwise will not be completely perfect.</p>
-        </div>
-        <div class="field">
-          <label for="roadType">Road type</label>
-          <select id="roadType">
-            <option value="1.0">Smooth pavement</option>
-            <option value="1.3" selected>Average pavement</option>
-            <option value="1.9">Gravel or dirt</option>
-            <option value="2.4">Rough / cracked pavement</option>
-          </select>
-        </div>
+        <div class="field"><label for="headwind">Headwind (<span class="speed-unit">mph</span>) <span style="opacity:.7">— optional</span></label><input type="number" id="headwind" min="0" step="1" autocomplete="off" /><p class="hint">If you're riding into the wind, the wind speed can be found from a weather app. Only fully accurate if you're riding directly into the headwind at this consistent wind speed; otherwise will not be completely perfect.</p></div>
+        <div class="field"><label for="roadType">Road type</label><select id="roadType"><option value="1.0">Smooth pavement</option><option value="1.3" selected>Average pavement</option><option value="1.9">Gravel or dirt</option><option value="2.4">Rough / cracked pavement</option></select></div>
       </form>
     </section>
-
     <button type="button" class="primary block" id="calculateBtn" style="margin-bottom:18px">Calculate</button>
-
     <section class="card" id="results-card" hidden>
       <h2 style="justify-content:center">Estimate</h2>
-      <div class="gauge-wrap">
-        <svg width="180" height="180" viewBox="0 0 180 180">
-          <circle cx="90" cy="90" r="78" stroke="#22303C" stroke-width="14" fill="none"></circle>
-          <circle id="gaugeArc" cx="90" cy="90" r="78" stroke="#D47E30" stroke-width="14" fill="none" stroke-linecap="round" transform="rotate(-90 90 90)" stroke-dasharray="490" stroke-dashoffset="490"></circle>
-          <text x="90" y="86" text-anchor="middle" class="gauge-pct" fill="#E8EDF2" id="gaugePctText">--%</text>
-          <text x="90" y="108" text-anchor="middle" class="gauge-value" id="gaugeWhText">-- Wh left</text>
-        </svg>
-      </div>
+      <div class="gauge-wrap"><svg width="180" height="180" viewBox="0 0 180 180"><circle cx="90" cy="90" r="78" stroke="#22303C" stroke-width="14" fill="none"></circle><circle id="gaugeArc" cx="90" cy="90" r="78" stroke="#D47E30" stroke-width="14" fill="none" stroke-linecap="round" transform="rotate(-90 90 90)" stroke-dasharray="490" stroke-dashoffset="490"></circle><text x="90" y="86" text-anchor="middle" class="gauge-pct" fill="#E8EDF2" id="gaugePctText">--%</text><text x="90" y="108" text-anchor="middle" class="gauge-value" id="gaugeWhText">-- Wh left</text></svg></div>
       <div id="resultBanner"></div>
-      <div class="stats-grid">
-        <div class="stat"><div class="label">Distance</div><div class="value" id="statDistance">--</div></div>
-        <div class="stat"><div class="label">Total climbing</div><div class="value" id="statGain">--</div></div>
-        <div class="stat"><div class="label">Energy used</div><div class="value" id="statEnergy">--</div></div>
-        <div class="stat"><div class="label">Ride time</div><div class="value" id="statTime">--</div></div>
-      </div>
-      <details>
-        <summary>Show energy breakdown</summary>
-        <div class="breakdown" id="breakdownList"></div>
-      </details>
+      <div class="stats-grid"><div class="stat"><div class="label">Distance</div><div class="value" id="statDistance">--</div></div><div class="stat"><div class="label">Total climbing</div><div class="value" id="statGain">--</div></div><div class="stat"><div class="label">Energy used</div><div class="value" id="statEnergy">--</div></div><div class="stat"><div class="label">Ride time</div><div class="value" id="statTime">--</div></div></div>
+      <details><summary>Show energy breakdown</summary><div class="breakdown" id="breakdownList"></div></details>
     </section>
   </div>
 
   <div class="app-page" id="scooterPage" hidden>
-    <div class="page-topbar">
-      <button type="button" class="back-button" data-go-home aria-label="Back to home">←</button>
-    </div>
-
+    <div class="page-topbar"><button type="button" class="back-button" data-go-home aria-label="Back to home">←</button></div>
     <section class="card" id="scooter-card">
       <h2>Your scooter <span class="badge">Saved on this device</span></h2>
       <p class="subhead">Fill this in according to your scooter. It's saved locally so you won't have to redo it every time.</p>
       <form id="scooterForm">
-        <div class="field">
-          <label>Battery capacity</label>
-          <div class="toggle-group">
-            <div class="toggle-btn active" data-mode="wh">Watt-hours (Wh)</div>
-            <div class="toggle-btn" data-mode="ah">Amp-hours + Voltage</div>
-          </div>
-        </div>
-        <div class="field" id="whField">
-          <label for="batteryWh">Battery capacity (Wh)</label>
-          <input type="number" id="batteryWh" min="0" step="1" />
-        </div>
-        <div class="row2" id="ahField" style="display:none">
-          <div class="field">
-            <label for="batteryAh">Capacity (Ah)</label>
-            <input type="number" id="batteryAh" min="0" step="0.1" />
-          </div>
-          <div class="field">
-            <label for="batteryV">Nominal voltage (V)</label>
-            <input type="number" id="batteryV" min="0" step="0.1" />
-          </div>
-        </div>
-        <div class="row2">
-          <div class="field">
-            <label for="riderWeight">Rider weight (<span class="weight-unit">lb</span>)</label>
-            <input type="number" id="riderWeight" min="0" step="1" />
-          </div>
-          <div class="field">
-            <label for="scooterWeight">Scooter weight (<span class="weight-unit">lb</span>)</label>
-            <input type="number" id="scooterWeight" min="0" step="0.5" />
-          </div>
-        </div>
-        <div class="row2">
-          <div class="field">
-            <label for="motorPower">Rated continuous motor power (W)</label>
-            <input type="number" id="motorPower" min="0" step="10" />
-          </div>
-          <div class="field">
-            <label for="motorPowerMax">Rated max motor power (W)</label>
-            <input type="number" id="motorPowerMax" min="0" step="10" />
-          </div>
-        </div>
-        <div class="field">
-          <label for="tireDiameter">Tire diameter (<span class="diameter-unit">in</span>)</label>
-          <input type="number" id="tireDiameter" min="0" step="0.1" />
-        </div>
-        <div class="row2">
-          <div class="field">
-            <label for="tireType">Tire type</label>
-            <select id="tireType">
-              <option value="honeycomb">Honeycomb</option>
-              <option value="pneumatic" selected>Pneumatic</option>
-              <option value="tubeless">Tubeless</option>
-            </select>
-          </div>
-        </div>
-        <div class="field">
-          <label for="efficiency">Drivetrain efficiency (%) <span style="opacity:.7">— optional</span></label>
-          <input type="number" id="efficiency" min="1" max="100" step="1" />
-          <p class="hint">Only fill this in if you actually know your scooter's efficiency rating. Leave blank and typical value (80%) will be used instead.</p>
-        </div>
-        <div class="btn-row">
-          <button type="button" class="primary block" id="saveProfileBtn">Save scooter profile</button>
-          <button type="button" class="danger-outline" id="clearProfileBtn">Clear</button>
-        </div>
-        <div id="profileStatus"></div>
+        <div class="field"><label>Battery capacity</label><div class="toggle-group"><div class="toggle-btn active" data-mode="wh">Watt-hours (Wh)</div><div class="toggle-btn" data-mode="ah">Amp-hours + Voltage</div></div></div>
+        <div class="field" id="whField"><label for="batteryWh">Battery capacity (Wh)</label><input type="number" id="batteryWh" min="0" step="1" /></div>
+        <div class="row2" id="ahField" style="display:none"><div class="field"><label for="batteryAh">Capacity (Ah)</label><input type="number" id="batteryAh" min="0" step="0.1" /></div><div class="field"><label for="batteryV">Nominal voltage (V)</label><input type="number" id="batteryV" min="0" step="0.1" /></div></div>
+        <div class="row2"><div class="field"><label for="riderWeight">Rider weight (<span class="weight-unit">lb</span>)</label><input type="number" id="riderWeight" min="0" step="1" /></div><div class="field"><label for="scooterWeight">Scooter weight (<span class="weight-unit">lb</span>)</label><input type="number" id="scooterWeight" min="0" step="0.5" /></div></div>
+        <div class="row2"><div class="field"><label for="motorPower">Rated continuous motor power (W)</label><input type="number" id="motorPower" min="0" step="10" /></div><div class="field"><label for="motorPowerMax">Rated max motor power (W)</label><input type="number" id="motorPowerMax" min="0" step="10" /></div></div>
+        <div class="field"><label for="tireDiameter">Tire diameter (<span class="diameter-unit">in</span>)</label><input type="number" id="tireDiameter" min="0" step="0.1" /></div>
+        <div class="row2"><div class="field"><label for="tireType">Tire type</label><select id="tireType"><option value="honeycomb">Honeycomb</option><option value="pneumatic" selected>Pneumatic</option><option value="tubeless">Tubeless</option></select></div></div>
+        <div class="field"><label for="efficiency">Drivetrain efficiency (%) <span style="opacity:.7">— optional</span></label><input type="number" id="efficiency" min="1" max="100" step="1" /><p class="hint">Only fill this in if you actually know your scooter's efficiency rating. Leave blank and typical value (80%) will be used instead.</p></div>
+        <div class="btn-row"><button type="button" class="primary block" id="saveProfileBtn">Save scooter profile</button><button type="button" class="danger-outline" id="clearProfileBtn">Clear</button></div><div id="profileStatus"></div>
       </form>
     </section>
   </div>
-</div>
 
-<div class="version-badge" id="versionBadge" tabindex="0">
-  v1.2.0
-  <div class="version-popup">
-    <div class="version-popup-title">Changelog</div>
-    <ul id="versionList"></ul>
+  <div class="app-page" id="rideTrackerPage" hidden>
+    <div class="page-topbar"><button type="button" class="back-button" data-go-home aria-label="Back to home">←</button></div>
+    <section class="card"><p class="ride-total">Total Ride Distance: <span id="totalRideDistance">0 mi</span></p></section>
+    <section class="card">
+      <h2>Add a ride</h2>
+      <p class="subhead">Enter the distance manually for each ride you want to keep track of.</p>
+      <div class="field"><label for="trackedRideDistance">Ride distance (<span id="trackedRideUnit">mi</span>)</label><input type="number" id="trackedRideDistance" min="0" step="0.1" /></div>
+      <button type="button" class="primary block" id="addTrackedRide">Add Ride</button>
+    </section>
+    <div id="rideHistoryList" class="ride-list"></div>
   </div>
 </div>
 
+<div class="version-badge" id="versionBadge" tabindex="0">v1.2.0<div class="version-popup"><div class="version-popup-title">Changelog</div><ul id="versionList"></ul></div></div>
+
 <script>
 (function(){
-  "use strict";
+"use strict";
+const CHANGELOG=[{version:"v1.2.0",notes:"8/30/2026. Changed the interface of the app to have two tabs for more conciseness."},{version:"v1.1.1",notes:"8/16/2026. Added percent symbol after starting battery"},{version:"v1.1.0",notes:"8/16/2026. Added a changelog"},{version:"v1.0.1",notes:"8/9/2026. Added the option to switch between imperial and metric units. Also changed the color scheme to be orange. Added an app logo."}];
+function esc(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+document.getElementById('versionList').innerHTML=CHANGELOG.map(e=>`<li><strong>${esc(e.version)}:</strong> ${esc(e.notes)}</li>`).join('');
+const versionBadge=document.getElementById('versionBadge');versionBadge.addEventListener('click',()=>versionBadge.classList.toggle('active'));document.addEventListener('click',e=>{if(!versionBadge.contains(e.target))versionBadge.classList.remove('active');});
 
-  const CHANGELOG=[
-    {version:"v1.2.0",notes:"8/30/2026. Changed the interface of the app to have two tabs for more conciseness."},
-    {version:"v1.1.1",notes:"8/16/2026. Added percent symbol after starting battery"},
-    {version:"v1.1.0",notes:"8/16/2026. Added a changelog"},
-    {version:"v1.0.1",notes:"8/9/2026. Added the option to switch between imperial and metric units. Also changed the color scheme to be orange. Added an app logo."}
-  ];
+const homePage=document.getElementById('homePage'),ridePage=document.getElementById('ridePage'),scooterPage=document.getElementById('scooterPage'),rideTrackerPage=document.getElementById('rideTrackerPage');
+function showView(view){homePage.hidden=view!=='home';ridePage.hidden=view!=='ride';scooterPage.hidden=view!=='scooter';rideTrackerPage.hidden=view!=='tracker';window.scrollTo({top:0,behavior:'smooth'});}
+document.getElementById('openRidePage').addEventListener('click',()=>showView('ride'));document.getElementById('openScooterPage').addEventListener('click',()=>showView('scooter'));document.getElementById('openRideTrackerPage').addEventListener('click',()=>{renderRideHistory();showView('tracker');});document.querySelectorAll('[data-go-home]').forEach(b=>b.addEventListener('click',()=>showView('home')));
 
-  function escapeHtml(value){
-    return String(value??'').replace(/[&<>'"]/g,character=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]));
-  }
-  const versionList=document.getElementById('versionList');
-  versionList.innerHTML=CHANGELOG.map(entry=>`<li><strong>${escapeHtml(entry.version)}:</strong> ${escapeHtml(entry.notes)}</li>`).join('');
-  const versionBadge=document.getElementById('versionBadge');
-  versionBadge.addEventListener('click',()=>versionBadge.classList.toggle('active'));
-  document.addEventListener('click',event=>{if(!versionBadge.contains(event.target))versionBadge.classList.remove('active');});
+const LS_PROFILE='scooterApp_profile',LS_RIDES='scooterRideHistory_v1';
+function loadProfile(){try{const raw=localStorage.getItem(LS_PROFILE);return raw?JSON.parse(raw):null;}catch(e){return null;}}function saveProfile(o){localStorage.setItem(LS_PROFILE,JSON.stringify(o));}function clearProfileStorage(){localStorage.removeItem(LS_PROFILE);}
+function loadRides(){try{const raw=localStorage.getItem(LS_RIDES);const parsed=raw?JSON.parse(raw):[];return Array.isArray(parsed)?parsed:[];}catch(e){return [];}}function saveRides(rides){localStorage.setItem(LS_RIDES,JSON.stringify(rides));}
 
-  const homePage=document.getElementById('homePage');
-  const ridePage=document.getElementById('ridePage');
-  const scooterPage=document.getElementById('scooterPage');
+const toggleBtns=document.querySelectorAll('.toggle-btn'),whField=document.getElementById('whField'),ahField=document.getElementById('ahField');let capacityMode='wh';
+const batteryWh=document.getElementById('batteryWh'),batteryAh=document.getElementById('batteryAh'),batteryV=document.getElementById('batteryV'),riderWeight=document.getElementById('riderWeight'),scooterWeight=document.getElementById('scooterWeight'),motorPower=document.getElementById('motorPower'),motorPowerMax=document.getElementById('motorPowerMax'),tireDiameter=document.getElementById('tireDiameter'),efficiency=document.getElementById('efficiency'),tireType=document.getElementById('tireType'),roadType=document.getElementById('roadType'),profileStatus=document.getElementById('profileStatus');
+const rideDistance=document.getElementById('rideDistance'),elevGain=document.getElementById('elevGain'),startPercent=document.getElementById('startPercent'),avgSpeed=document.getElementById('avgSpeed'),headwind=document.getElementById('headwind'),resultsCard=document.getElementById('results-card'),gaugeArc=document.getElementById('gaugeArc'),gaugePctText=document.getElementById('gaugePctText'),gaugeWhText=document.getElementById('gaugeWhText'),resultBanner=document.getElementById('resultBanner'),statDistance=document.getElementById('statDistance'),statGain=document.getElementById('statGain'),statEnergy=document.getElementById('statEnergy'),statTime=document.getElementById('statTime'),breakdownList=document.getElementById('breakdownList');
 
-  function showView(view){
-    homePage.hidden=view!=='home';
-    ridePage.hidden=view!=='ride';
-    scooterPage.hidden=view!=='scooter';
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-  document.getElementById('openRidePage').addEventListener('click',()=>showView('ride'));
-  document.getElementById('openScooterPage').addEventListener('click',()=>showView('scooter'));
-  document.querySelectorAll('[data-go-home]').forEach(button=>button.addEventListener('click',()=>showView('home')));
+toggleBtns.forEach(button=>button.addEventListener('click',()=>{toggleBtns.forEach(b=>b.classList.remove('active'));button.classList.add('active');capacityMode=button.dataset.mode;if(capacityMode==='wh'){whField.style.display='';ahField.style.display='none';}else{whField.style.display='none';ahField.style.display='grid';}}));
+function getCapacityWh(){if(capacityMode==='wh')return parseFloat(batteryWh.value)||0;return(parseFloat(batteryAh.value)||0)*(parseFloat(batteryV.value)||0);}function readProfileForm(){return{capacityMode,batteryWh:batteryWh.value,batteryAh:batteryAh.value,batteryV:batteryV.value,riderWeight:riderWeight.value,scooterWeight:scooterWeight.value,motorPower:motorPower.value,motorPowerMax:motorPowerMax.value,tireDiameter:tireDiameter.value,efficiency:efficiency.value,tireType:tireType.value,roadType:roadType.value};}
+function applyProfileToForm(p){if(!p)return;capacityMode=p.capacityMode||'wh';toggleBtns.forEach(b=>b.classList.toggle('active',b.dataset.mode===capacityMode));if(capacityMode==='wh'){whField.style.display='';ahField.style.display='none';}else{whField.style.display='none';ahField.style.display='grid';}batteryWh.value=p.batteryWh||'';batteryAh.value=p.batteryAh||'';batteryV.value=p.batteryV||'';riderWeight.value=p.riderWeight||'';scooterWeight.value=p.scooterWeight||'';motorPower.value=p.motorPower||'';motorPowerMax.value=p.motorPowerMax||'';tireDiameter.value=p.tireDiameter||'';efficiency.value=p.efficiency||'';if(p.tireType)tireType.value=p.tireType;if(p.roadType)roadType.value=p.roadType;}
+document.getElementById('saveProfileBtn').addEventListener('click',()=>{saveProfile(readProfileForm());profileStatus.textContent='Saved — this will load automatically next time.';setTimeout(()=>profileStatus.textContent='',3500);});document.getElementById('clearProfileBtn').addEventListener('click',()=>{clearProfileStorage();batteryWh.value='';batteryAh.value='';batteryV.value='';riderWeight.value='';scooterWeight.value='';motorPower.value='';motorPowerMax.value='';tireDiameter.value='';efficiency.value='';tireType.value='pneumatic';roadType.value='1.3';profileStatus.textContent='Profile cleared.';setTimeout(()=>profileStatus.textContent='',3000);});applyProfileToForm(loadProfile());
+function resetTripForm(){rideDistance.value='';elevGain.value='';startPercent.value='';avgSpeed.value='';headwind.value='';resultsCard.hidden=true;}document.addEventListener('DOMContentLoaded',resetTripForm);window.addEventListener('pageshow',resetTripForm);resetTripForm();
 
-  const LS_PROFILE="scooterApp_profile";
-  function loadProfile(){try{const raw=localStorage.getItem(LS_PROFILE);return raw?JSON.parse(raw):null;}catch(error){return null;}}
-  function saveProfile(object){localStorage.setItem(LS_PROFILE,JSON.stringify(object));}
-  function clearProfileStorage(){localStorage.removeItem(LS_PROFILE);}
+const TIRE_BASE_CRR={honeycomb:.014,pneumatic:.007,tubeless:.0065},DEFAULT_EFFICIENCY=.8,CDA=.6,AIR_DENSITY=1.225,G=9.81,REFERENCE_TIRE_DIAMETER_IN=10,MI_TO_M=1609.344,FT_TO_M=.3048,LB_TO_KG=.453592,MPH_TO_MS=.44704;let unitSystem='imperial';const unitSelect=document.getElementById('unitSystem');const unitFactors={lbToKg:.45359237,kgToLb:2.20462262,miToKm:1.609344,kmToMi:.621371192,ftToM:.3048,mToFt:3.280839895,inToCm:2.54,cmToIn:.393700787};
+function convertInputValue(id,f){const el=document.getElementById(id);if(!el||el.value==='')return;const n=parseFloat(el.value);if(isFinite(n))el.value=(n*f).toFixed(6).replace(/\.?0+$/,'');}
+function updateUnitLabels(){const metric=unitSystem==='metric';document.querySelectorAll('.distance-unit').forEach(e=>e.textContent=metric?'km':'mi');document.querySelectorAll('.elevation-unit').forEach(e=>e.textContent=metric?'m':'ft');document.querySelectorAll('.speed-unit').forEach(e=>e.textContent=metric?'km/h':'mph');document.querySelectorAll('.weight-unit').forEach(e=>e.textContent=metric?'kg':'lb');document.querySelectorAll('.diameter-unit').forEach(e=>e.textContent=metric?'cm':'in');document.getElementById('trackedRideUnit').textContent=metric?'km':'mi';renderRideHistory();}
+function switchUnits(next){if(next===unitSystem)return;const m=next==='metric';if(m){convertInputValue('rideDistance',unitFactors.miToKm);convertInputValue('elevGain',unitFactors.ftToM);convertInputValue('avgSpeed',unitFactors.miToKm);convertInputValue('headwind',unitFactors.miToKm);convertInputValue('riderWeight',unitFactors.lbToKg);convertInputValue('scooterWeight',unitFactors.lbToKg);convertInputValue('tireDiameter',unitFactors.inToCm);}else{convertInputValue('rideDistance',unitFactors.kmToMi);convertInputValue('elevGain',unitFactors.mToFt);convertInputValue('avgSpeed',unitFactors.kmToMi);convertInputValue('headwind',unitFactors.kmToMi);convertInputValue('riderWeight',unitFactors.kgToLb);convertInputValue('scooterWeight',unitFactors.kgToLb);convertInputValue('tireDiameter',unitFactors.cmToIn);}unitSystem=next;localStorage.setItem('scooterUnitSystem',unitSystem);updateUnitLabels();}
+unitSelect.addEventListener('change',()=>switchUnits(unitSelect.value));const savedUnitSystem=localStorage.getItem('scooterUnitSystem');if(savedUnitSystem==='metric'){unitSystem='metric';unitSelect.value='metric';}updateUnitLabels();
 
-  const toggleBtns=document.querySelectorAll('.toggle-btn');
-  const whField=document.getElementById('whField');
-  const ahField=document.getElementById('ahField');
-  let capacityMode='wh';
-  const batteryWh=document.getElementById('batteryWh');
-  const batteryAh=document.getElementById('batteryAh');
-  const batteryV=document.getElementById('batteryV');
-  const riderWeight=document.getElementById('riderWeight');
-  const scooterWeight=document.getElementById('scooterWeight');
-  const motorPower=document.getElementById('motorPower');
-  const motorPowerMax=document.getElementById('motorPowerMax');
-  const tireDiameter=document.getElementById('tireDiameter');
-  const efficiency=document.getElementById('efficiency');
-  const tireType=document.getElementById('tireType');
-  const roadType=document.getElementById('roadType');
-  const saveProfileBtn=document.getElementById('saveProfileBtn');
-  const clearProfileBtn=document.getElementById('clearProfileBtn');
-  const profileStatus=document.getElementById('profileStatus');
-  const rideDistance=document.getElementById('rideDistance');
-  const elevGain=document.getElementById('elevGain');
-  const startPercent=document.getElementById('startPercent');
-  const avgSpeed=document.getElementById('avgSpeed');
-  const headwind=document.getElementById('headwind');
-  const calculateBtn=document.getElementById('calculateBtn');
-  const resultsCard=document.getElementById('results-card');
-  const gaugeArc=document.getElementById('gaugeArc');
-  const gaugePctText=document.getElementById('gaugePctText');
-  const gaugeWhText=document.getElementById('gaugeWhText');
-  const resultBanner=document.getElementById('resultBanner');
-  const statDistance=document.getElementById('statDistance');
-  const statGain=document.getElementById('statGain');
-  const statEnergy=document.getElementById('statEnergy');
-  const statTime=document.getElementById('statTime');
-  const breakdownList=document.getElementById('breakdownList');
+function displayDistance(mi){return unitSystem==='metric'?{value:mi*unitFactors.miToKm,unit:'km'}:{value:mi,unit:'mi'};}function niceDistance(n){return Number(n).toLocaleString(undefined,{maximumFractionDigits:2});}
+function renderRideHistory(){const rides=loadRides();const totalMi=rides.reduce((sum,r)=>sum+(Number(r.distanceMi)||0),0),total=displayDistance(totalMi);document.getElementById('totalRideDistance').textContent=`${niceDistance(total.value)} ${total.unit}`;const list=document.getElementById('rideHistoryList');if(!rides.length){list.innerHTML='<div class="empty-rides">No rides added yet.</div>';return;}list.innerHTML=rides.map((ride,index)=>{const d=displayDistance(Number(ride.distanceMi)||0);return`<button type="button" class="ride-record" data-ride-index="${index}"><div class="ride-record-head"><span class="ride-record-title">Ride ${index+1}</span><span class="ride-record-distance">${niceDistance(d.value)} ${d.unit}</span></div><div class="ride-record-details">Distance: ${niceDistance(d.value)} ${d.unit}</div></button>`;}).join('');list.querySelectorAll('.ride-record').forEach(record=>record.addEventListener('click',()=>record.classList.toggle('open')));}
+document.getElementById('addTrackedRide').addEventListener('click',()=>{const input=document.getElementById('trackedRideDistance');const entered=parseFloat(input.value);if(!isFinite(entered)||entered<=0){alert('Enter a valid ride distance.');return;}const distanceMi=unitSystem==='metric'?entered*unitFactors.kmToMi:entered;const rides=loadRides();rides.push({distanceMi});saveRides(rides);input.value='';renderRideHistory();});
 
-  toggleBtns.forEach(button=>{
-    button.addEventListener('click',function(){
-      toggleBtns.forEach(otherButton=>otherButton.classList.remove('active'));
-      button.classList.add('active');
-      capacityMode=button.dataset.mode;
-      if(capacityMode==='wh'){whField.style.display='';ahField.style.display='none';}
-      else{whField.style.display='none';ahField.style.display='grid';}
-    });
-  });
+function estimateEnergyUsedWh(p){const distanceM=p.distanceMi*MI_TO_M,elevGainM=p.elevGainFt*FT_TO_M,speedMph=p.avgSpeedMph||15,timeHours=p.distanceMi/speedMph,airSpeedMs=(speedMph+(p.headwindMph||0))*MPH_TO_MS,diameterFactor=p.tireDiameterIn?Math.sqrt(REFERENCE_TIRE_DIAMETER_IN/p.tireDiameterIn):1,crrAdjusted=p.crr*diameterFactor,rollingJ=crrAdjusted*p.totalWeightKg*G*distanceM,climbJ=p.totalWeightKg*G*elevGainM,dragJ=.5*AIR_DENSITY*CDA*Math.pow(airSpeedMs,2)*distanceM,efficiencyFraction=p.efficiencyPct?p.efficiencyPct/100:DEFAULT_EFFICIENCY,batteryWh=Math.max(0,(rollingJ+climbJ+dragJ)/efficiencyFraction/3600);return{batteryWh,breakdown:{rollingWh:rollingJ/3600,climbWh:climbJ/3600,dragWh:dragJ/3600,timeHours,efficiencyUsedPct:efficiencyFraction*100}};}
+function fmt(n,d){if(!isFinite(n))return'--';return n.toLocaleString(undefined,{minimumFractionDigits:d||0,maximumFractionDigits:d||0});}function setGauge(percent){const c=Math.max(0,Math.min(100,percent)),circ=2*Math.PI*78;gaugeArc.setAttribute('stroke-dasharray',circ.toFixed(1));gaugeArc.setAttribute('stroke-dashoffset',(circ*(1-c/100)).toFixed(1));let color='#D47E30';if(c<15)color='#E0574C';else if(c<35)color='#E0B84C';gaugeArc.setAttribute('stroke',color);gaugePctText.textContent=fmt(c,0)+'%';}function setBanner(kind,msg){if(!msg){resultBanner.innerHTML='';return;}resultBanner.innerHTML='<div class="banner '+kind+'">'+msg+'</div>';}
+document.getElementById('calculateBtn').addEventListener('click',()=>{setBanner('','');const capacityWh=getCapacityWh(),riderWeightInput=parseFloat(riderWeight.value)||0,scooterWeightInput=parseFloat(scooterWeight.value)||0,totalWeightKg=unitSystem==='metric'?(riderWeightInput+scooterWeightInput):(riderWeightInput+scooterWeightInput)*LB_TO_KG;if(!capacityWh||capacityWh<=0){alert("Fill in your scooter's battery capacity in the scooter details page first.");showView('scooter');return;}if(!totalWeightKg){alert('Enter rider and scooter weight in the scooter details page first.');showView('scooter');return;}const distanceInput=parseFloat(rideDistance.value),elevationInput=parseFloat(elevGain.value)||0,distanceMi=unitSystem==='metric'?distanceInput*unitFactors.kmToMi:distanceInput,elevGainFt=unitSystem==='metric'?elevationInput*unitFactors.mToFt:elevationInput,startPct=parseFloat(startPercent.value),speedInput=parseFloat(avgSpeed.value),speedMph=unitSystem==='metric'?speedInput*unitFactors.kmToMi:speedInput,headwindInput=parseFloat(headwind.value)||0,headwindMph=unitSystem==='metric'?headwindInput*unitFactors.kmToMi:headwindInput;if(!distanceMi||distanceMi<=0){alert('Enter the total ride distance.');return;}if(isNaN(startPct)||startPct<0||startPct>100){alert('Enter a valid starting battery percentage (0–100).');return;}const tireBase=TIRE_BASE_CRR[tireType.value]||TIRE_BASE_CRR.pneumatic,crr=tireBase*(parseFloat(roadType.value)||1.3),tireDiameterInput=parseFloat(tireDiameter.value)||0,tireDiameterIn=unitSystem==='metric'?tireDiameterInput*unitFactors.cmToIn:tireDiameterInput,result=estimateEnergyUsedWh({distanceMi,elevGainFt,totalWeightKg,crr,avgSpeedMph:speedMph,headwindMph,tireDiameterIn,efficiencyPct:parseFloat(efficiency.value)||0}),startingWh=capacityWh*(startPct/100),remainingWh=startingWh-result.batteryWh,remainingPct=remainingWh/capacityWh*100;resultsCard.hidden=false;setGauge(remainingPct);gaugeWhText.textContent=fmt(Math.max(0,remainingWh),0)+' Wh left';statDistance.textContent=fmt(distanceInput,1)+(unitSystem==='metric'?' km':' mi');statGain.textContent='+'+fmt(elevationInput,0)+(unitSystem==='metric'?' m':' ft');statEnergy.textContent=fmt(result.batteryWh,0)+' Wh';statTime.textContent=fmt(result.breakdown.timeHours*60,0)+' min';breakdownList.innerHTML='<div><span>Rolling resistance</span><span>'+fmt(result.breakdown.rollingWh,0)+' Wh</span></div><div><span>Climbing</span><span>'+fmt(result.breakdown.climbWh,0)+' Wh</span></div><div><span>Wind drag</span><span>'+fmt(result.breakdown.dragWh,0)+' Wh</span></div><div><span>Drivetrain efficiency used</span><span>'+fmt(result.breakdown.efficiencyUsedPct,0)+'%</span></div>';if(remainingPct<0)setBanner('danger','This ride needs about '+fmt(result.batteryWh,0)+' Wh, more than the '+fmt(startingWh,0)+" Wh you're starting with. You likely won't make it without charging.");else if(remainingPct<15)setBanner('warn',"You'll finish low on battery — plan a charge soon after arriving.");else setBanner('info','');resultsCard.scrollIntoView({behavior:'smooth',block:'start'});});
 
-  function getCapacityWh(){
-    if(capacityMode==='wh')return parseFloat(batteryWh.value)||0;
-    return (parseFloat(batteryAh.value)||0)*(parseFloat(batteryV.value)||0);
-  }
-  function readProfileForm(){
-    return {capacityMode,batteryWh:batteryWh.value,batteryAh:batteryAh.value,batteryV:batteryV.value,riderWeight:riderWeight.value,scooterWeight:scooterWeight.value,motorPower:motorPower.value,motorPowerMax:motorPowerMax.value,tireDiameter:tireDiameter.value,efficiency:efficiency.value,tireType:tireType.value,roadType:roadType.value};
-  }
-  function applyProfileToForm(profile){
-    if(!profile)return;
-    capacityMode=profile.capacityMode||'wh';
-    toggleBtns.forEach(button=>button.classList.toggle('active',button.dataset.mode===capacityMode));
-    if(capacityMode==='wh'){whField.style.display='';ahField.style.display='none';}
-    else{whField.style.display='none';ahField.style.display='grid';}
-    batteryWh.value=profile.batteryWh||'';
-    batteryAh.value=profile.batteryAh||'';
-    batteryV.value=profile.batteryV||'';
-    riderWeight.value=profile.riderWeight||'';
-    scooterWeight.value=profile.scooterWeight||'';
-    motorPower.value=profile.motorPower||'';
-    motorPowerMax.value=profile.motorPowerMax||'';
-    tireDiameter.value=profile.tireDiameter||'';
-    efficiency.value=profile.efficiency||'';
-    if(profile.tireType)tireType.value=profile.tireType;
-    if(profile.roadType)roadType.value=profile.roadType;
-  }
-  saveProfileBtn.addEventListener('click',function(){
-    saveProfile(readProfileForm());
-    profileStatus.textContent="Saved — this will load automatically next time.";
-    setTimeout(()=>{profileStatus.textContent="";},3500);
-  });
-  clearProfileBtn.addEventListener('click',function(){
-    clearProfileStorage();
-    batteryWh.value='';batteryAh.value='';batteryV.value='';riderWeight.value='';scooterWeight.value='';motorPower.value='';motorPowerMax.value='';tireDiameter.value='';efficiency.value='';
-    tireType.value='pneumatic';roadType.value='1.3';
-    profileStatus.textContent="Profile cleared.";
-    setTimeout(()=>{profileStatus.textContent="";},3000);
-  });
-  applyProfileToForm(loadProfile());
-
-  function resetTripForm(){
-    rideDistance.value="";elevGain.value="";startPercent.value="";avgSpeed.value="";headwind.value="";resultsCard.hidden=true;
-  }
-  document.addEventListener('DOMContentLoaded',resetTripForm);
-  window.addEventListener('pageshow',resetTripForm);
-  resetTripForm();
-
-  const TIRE_BASE_CRR={honeycomb:0.014,pneumatic:0.007,tubeless:0.0065};
-  const DEFAULT_EFFICIENCY=0.80,CDA=0.6,AIR_DENSITY=1.225,G=9.81,REFERENCE_TIRE_DIAMETER_IN=10,MI_TO_M=1609.344,FT_TO_M=0.3048,LB_TO_KG=0.453592,MPH_TO_MS=0.44704;
-  let unitSystem='imperial';
-  const unitSelect=document.getElementById('unitSystem');
-  const unitFactors={lbToKg:0.45359237,kgToLb:2.20462262,miToKm:1.609344,kmToMi:0.621371192,ftToM:0.3048,mToFt:3.280839895,inToCm:2.54,cmToIn:0.393700787};
-  function convertInputValue(id,factor){const element=document.getElementById(id);if(!element||element.value==='')return;const number=parseFloat(element.value);if(isFinite(number))element.value=(number*factor).toFixed(6).replace(/\.?0+$/,'');}
-  function updateUnitLabels(){
-    const metric=unitSystem==='metric';
-    document.querySelectorAll('.distance-unit').forEach(element=>element.textContent=metric?'km':'mi');
-    document.querySelectorAll('.elevation-unit').forEach(element=>element.textContent=metric?'m':'ft');
-    document.querySelectorAll('.speed-unit').forEach(element=>element.textContent=metric?'km/h':'mph');
-    document.querySelectorAll('.weight-unit').forEach(element=>element.textContent=metric?'kg':'lb');
-    document.querySelectorAll('.diameter-unit').forEach(element=>element.textContent=metric?'cm':'in');
-  }
-  function switchUnits(next){
-    if(next===unitSystem)return;
-    const toMetric=next==='metric';
-    if(toMetric){
-      convertInputValue('rideDistance',unitFactors.miToKm);convertInputValue('elevGain',unitFactors.ftToM);convertInputValue('avgSpeed',unitFactors.miToKm);convertInputValue('headwind',unitFactors.miToKm);convertInputValue('riderWeight',unitFactors.lbToKg);convertInputValue('scooterWeight',unitFactors.lbToKg);convertInputValue('tireDiameter',unitFactors.inToCm);
-    }else{
-      convertInputValue('rideDistance',unitFactors.kmToMi);convertInputValue('elevGain',unitFactors.mToFt);convertInputValue('avgSpeed',unitFactors.kmToMi);convertInputValue('headwind',unitFactors.kmToMi);convertInputValue('riderWeight',unitFactors.kgToLb);convertInputValue('scooterWeight',unitFactors.kgToLb);convertInputValue('tireDiameter',unitFactors.cmToIn);
-    }
-    unitSystem=next;localStorage.setItem('scooterUnitSystem',unitSystem);updateUnitLabels();
-  }
-  unitSelect.addEventListener('change',()=>switchUnits(unitSelect.value));
-  const savedUnitSystem=localStorage.getItem('scooterUnitSystem');
-  if(savedUnitSystem==='metric'){unitSystem='metric';unitSelect.value='metric';}
-  updateUnitLabels();
-
-  function estimateEnergyUsedWh(parameters){
-    const distanceM=parameters.distanceMi*MI_TO_M;
-    const elevGainM=parameters.elevGainFt*FT_TO_M;
-    const speedMph=parameters.avgSpeedMph||15;
-    const timeHours=parameters.distanceMi/speedMph;
-    const headwindMph=parameters.headwindMph||0;
-    const airSpeedMs=(speedMph+headwindMph)*MPH_TO_MS;
-    const diameterFactor=parameters.tireDiameterIn?Math.sqrt(REFERENCE_TIRE_DIAMETER_IN/parameters.tireDiameterIn):1;
-    const crrAdjusted=parameters.crr*diameterFactor;
-    const rollingJ=crrAdjusted*parameters.totalWeightKg*G*distanceM;
-    const climbJ=parameters.totalWeightKg*G*elevGainM;
-    const dragJ=0.5*AIR_DENSITY*CDA*Math.pow(airSpeedMs,2)*distanceM;
-    const efficiencyFraction=parameters.efficiencyPct?(parameters.efficiencyPct/100):DEFAULT_EFFICIENCY;
-    const batteryWh=Math.max(0,(rollingJ+climbJ+dragJ)/efficiencyFraction/3600);
-    return {batteryWh,breakdown:{rollingWh:rollingJ/3600,climbWh:climbJ/3600,dragWh:dragJ/3600,timeHours,efficiencyUsedPct:efficiencyFraction*100}};
-  }
-  function fmt(number,decimals){if(!isFinite(number))return"--";return number.toLocaleString(undefined,{minimumFractionDigits:decimals||0,maximumFractionDigits:decimals||0});}
-  function setGauge(percent){
-    const clamped=Math.max(0,Math.min(100,percent));
-    const circumference=2*Math.PI*78;
-    gaugeArc.setAttribute('stroke-dasharray',circumference.toFixed(1));
-    gaugeArc.setAttribute('stroke-dashoffset',(circumference*(1-clamped/100)).toFixed(1));
-    let color='#D47E30';if(clamped<15)color='#E0574C';else if(clamped<35)color='#E0B84C';
-    gaugeArc.setAttribute('stroke',color);gaugePctText.textContent=fmt(clamped,0)+"%";
-  }
-  function setBanner(kind,message){if(!message){resultBanner.innerHTML="";return;}resultBanner.innerHTML='<div class="banner '+kind+'">'+message+'</div>';}
-
-  calculateBtn.addEventListener('click',function(){
-    setBanner('','');
-    const capacityWh=getCapacityWh();
-    const riderWeightInput=parseFloat(riderWeight.value)||0;
-    const scooterWeightInput=parseFloat(scooterWeight.value)||0;
-    const totalWeightKg=unitSystem==='metric'?(riderWeightInput+scooterWeightInput):(riderWeightInput+scooterWeightInput)*LB_TO_KG;
-    if(!capacityWh||capacityWh<=0){alert("Fill in your scooter's battery capacity in the scooter details page first.");showView('scooter');return;}
-    if(!totalWeightKg){alert("Enter rider and scooter weight in the scooter details page first.");showView('scooter');return;}
-
-    const distanceInput=parseFloat(rideDistance.value);
-    const elevationInput=parseFloat(elevGain.value)||0;
-    const distanceMi=unitSystem==='metric'?distanceInput*unitFactors.kmToMi:distanceInput;
-    const elevGainFt=unitSystem==='metric'?elevationInput*unitFactors.mToFt:elevationInput;
-    const startPct=parseFloat(startPercent.value);
-    const speedInput=parseFloat(avgSpeed.value);
-    const speedMph=unitSystem==='metric'?speedInput*unitFactors.kmToMi:speedInput;
-    const headwindInput=parseFloat(headwind.value)||0;
-    const headwindMph=unitSystem==='metric'?headwindInput*unitFactors.kmToMi:headwindInput;
-    if(!distanceMi||distanceMi<=0){alert("Enter the total ride distance.");return;}
-    if(isNaN(startPct)||startPct<0||startPct>100){alert("Enter a valid starting battery percentage (0–100).");return;}
-
-    const tireBase=TIRE_BASE_CRR[tireType.value]||TIRE_BASE_CRR.pneumatic;
-    const crr=tireBase*(parseFloat(roadType.value)||1.3);
-    const tireDiameterInput=parseFloat(tireDiameter.value)||0;
-    const tireDiameterIn=unitSystem==='metric'?tireDiameterInput*unitFactors.cmToIn:tireDiameterInput;
-    const result=estimateEnergyUsedWh({distanceMi,elevGainFt,totalWeightKg,crr,avgSpeedMph:speedMph,headwindMph,tireDiameterIn,efficiencyPct:parseFloat(efficiency.value)||0});
-    const startingWh=capacityWh*(startPct/100);
-    const remainingWh=startingWh-result.batteryWh;
-    const remainingPct=(remainingWh/capacityWh)*100;
-    resultsCard.hidden=false;
-    setGauge(remainingPct);
-    gaugeWhText.textContent=fmt(Math.max(0,remainingWh),0)+" Wh left";
-    statDistance.textContent=fmt(distanceInput,1)+(unitSystem==='metric'?" km":" mi");
-    statGain.textContent="+"+fmt(elevationInput,0)+(unitSystem==='metric'?" m":" ft");
-    statEnergy.textContent=fmt(result.batteryWh,0)+" Wh";
-    statTime.textContent=fmt(result.breakdown.timeHours*60,0)+" min";
-    breakdownList.innerHTML='<div><span>Rolling resistance</span><span>'+fmt(result.breakdown.rollingWh,0)+' Wh</span></div><div><span>Climbing</span><span>'+fmt(result.breakdown.climbWh,0)+' Wh</span></div><div><span>Wind drag</span><span>'+fmt(result.breakdown.dragWh,0)+' Wh</span></div><div><span>Drivetrain efficiency used</span><span>'+fmt(result.breakdown.efficiencyUsedPct,0)+'%</span></div>';
-    if(remainingPct<0)setBanner('danger',"This ride needs about "+fmt(result.batteryWh,0)+" Wh, more than the "+fmt(startingWh,0)+" Wh you're starting with. You likely won't make it without charging.");
-    else if(remainingPct<15)setBanner('warn',"You'll finish low on battery — plan a charge soon after arriving.");
-    else setBanner('info','');
-    resultsCard.scrollIntoView({behavior:'smooth',block:'start'});
-  });
-
-  if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}
+renderRideHistory();if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
 })();
 </script>
 </body>
