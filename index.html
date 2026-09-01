@@ -25,7 +25,8 @@
 .toggle-group{display:flex;gap:8px;margin-bottom:14px}.toggle-btn{flex:1;text-align:center;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--panel-2);color:var(--muted);font-size:13px;cursor:pointer;user-select:none}.toggle-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(212,126,48,.08)}.btn-row{display:flex;gap:10px;margin-top:4px;flex-wrap:wrap}.btn-row button{flex:1;min-width:140px}#profileStatus{font-size:12.5px;margin-top:8px;color:var(--muted)}
 #results-card{text-align:center}.gauge-wrap{display:flex;justify-content:center;margin:6px 0 14px}.gauge-value{font-family:'IBM Plex Mono',monospace;font-size:15px;fill:var(--muted)}.gauge-pct{font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:700}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left;margin-top:8px}.stat{background:var(--panel-2);border:1px solid var(--border);border-radius:10px;padding:10px 12px}.stat .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.stat .value{font-family:'IBM Plex Mono',monospace;font-size:16.5px;margin-top:3px}details{margin-top:16px;text-align:left}summary{cursor:pointer;font-size:13px;color:var(--muted)}.breakdown{margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted)}.breakdown div{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed var(--border)}.banner{border-radius:10px;padding:10px 12px;font-size:13px;margin-top:14px;text-align:left}.banner.warn{background:rgba(224,184,76,.1);border:1px solid rgba(224,184,76,.35);color:var(--warn)}.banner.danger{background:rgba(224,87,76,.1);border:1px solid rgba(224,87,76,.35);color:var(--danger)}.banner.info{background:rgba(76,159,224,.1);border:1px solid rgba(76,159,224,.35);color:var(--volt)}
 .ride-total{font-family:'Space Grotesk',sans-serif;font-size:23px;font-weight:700;line-height:1.25;margin:0}.ride-total span{color:var(--accent)}.ride-list{display:grid;gap:10px}.ride-record{position:relative;width:100%;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);text-align:left}.ride-record:hover{border-color:var(--accent)}.ride-record-main{width:100%;background:transparent;border:none;color:inherit;text-align:left;padding:0 38px 0 0}.ride-record-main:active{transform:none}.ride-record-head{display:flex;justify-content:space-between;gap:16px;align-items:center}.ride-record-title{font-family:'Space Grotesk',sans-serif;font-weight:700}.ride-record-distance{font-family:'IBM Plex Mono',monospace;color:var(--accent)}.ride-record-details{display:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;margin-top:9px;padding-top:9px;border-top:1px solid var(--border)}.ride-record.open .ride-record-details{display:block}.ride-delete{position:absolute;top:9px;right:9px;width:32px;height:32px;padding:0;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(224,87,76,.38);border-radius:8px;color:var(--danger);font-size:16px;line-height:1}.ride-delete:hover{background:rgba(224,87,76,.1);border-color:var(--danger)}.empty-rides{color:var(--muted);font-size:13px;text-align:center;padding:8px 0 2px}
-.version-badge{position:fixed;bottom:.9rem;right:.9rem;z-index:20;font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--muted);background:rgba(18,25,34,.85);border:1px solid var(--border);border-radius:6px;padding:.35rem .6rem;cursor:pointer;user-select:none}.version-popup{display:none;position:absolute;bottom:130%;right:0;width:min(300px,calc(100vw - 32px));background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:.8rem .9rem;font-family:'Inter',sans-serif;font-size:.75rem;color:var(--text);line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,.4)}.version-badge:hover .version-popup,.version-badge.active .version-popup{display:block}.version-popup-title{font-family:'IBM Plex Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.5rem}.version-popup ul{margin:0;padding-left:1.1rem}.version-popup li{margin-bottom:.5rem}.version-popup li:last-child{margin-bottom:0}
+.changelog-title{font-family:'Space Grotesk',sans-serif;font-size:28px;margin:0 0 18px}.changelog-group{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:12px}.changelog-group-title{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}.changelog-entry{padding:10px 0;border-top:1px solid var(--border)}.changelog-entry:first-of-type{border-top:none;padding-top:0}.changelog-entry:last-child{padding-bottom:0}.changelog-version{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}.changelog-notes{font-size:13px;color:var(--muted);line-height:1.5}
+.version-badge{position:fixed;bottom:.9rem;right:.9rem;z-index:20;font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:500;color:var(--muted);background:rgba(18,25,34,.85);border:1px solid var(--border);border-radius:6px;padding:.35rem .6rem;cursor:pointer;user-select:none}.version-badge:hover{border-color:var(--accent);color:var(--accent)}
 </style>
 </head>
 <body>
@@ -112,21 +113,44 @@
     </section>
     <div id="rideHistoryList" class="ride-list"></div>
   </div>
+
+  <div class="app-page" id="changelogPage" hidden>
+    <div class="page-topbar"><button type="button" class="back-button" data-go-home aria-label="Back to home">←</button></div>
+    <h1 class="changelog-title">Changelog</h1>
+    <div id="changelogGroups"></div>
+  </div>
 </div>
 
-<div class="version-badge" id="versionBadge" tabindex="0">v1.3.0<div class="version-popup"><div class="version-popup-title">Changelog</div><ul id="versionList"></ul></div></div>
+<button type="button" class="version-badge" id="versionBadge" aria-label="Open changelog">v1.4.1</button>
 
 <script>
 (function(){
 "use strict";
-const CHANGELOG=[{version:"v1.3.0",notes:"8/30/2026. Added the Ride Distance Tab"},{version:"v1.2.0",notes:"8/30/2026. Changed the interface of the app to have two tabs for more conciseness."},{version:"v1.1.1",notes:"8/16/2026. Added percent symbol after starting battery"},{version:"v1.1.0",notes:"8/16/2026. Added a changelog"},{version:"v1.0.1",notes:"8/9/2026. Added the option to switch between imperial and metric units. Also changed the color scheme to be orange. Added an app logo."}];
+const CHANGELOG=[
+  {version:"v1.4.1",notes:"9/1/2026: Made the changelog a new in-app page."},
+  {version:"v1.3.0",notes:"8/30/2026. Added the Ride Distance Tab"},
+  {version:"v1.2.0",notes:"8/30/2026. Changed the interface of the app to have two tabs for more conciseness."},
+  {version:"v1.1.1",notes:"8/16/2026. Added percent symbol after starting battery"},
+  {version:"v1.1.0",notes:"8/16/2026. Added a changelog"},
+  {version:"v1.0.1",notes:"8/9/2026. Added the option to switch between imperial and metric units. Also changed the color scheme to be orange. Added an app logo."}
+];
 function esc(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
-document.getElementById('versionList').innerHTML=CHANGELOG.map(e=>`<li><strong>${esc(e.version)}:</strong> ${esc(e.notes)}</li>`).join('');
-const versionBadge=document.getElementById('versionBadge');versionBadge.addEventListener('click',()=>versionBadge.classList.toggle('active'));document.addEventListener('click',e=>{if(!versionBadge.contains(e.target))versionBadge.classList.remove('active');});
+function changelogGroupKey(version){const match=String(version).match(/^v?(\d+)\.(\d+)\./i);return match?`${match[1]}.${match[2]}`:'Other';}
+function renderChangelog(){
+  const groups=[];
+  CHANGELOG.forEach(entry=>{
+    const key=changelogGroupKey(entry.version);
+    let group=groups.find(item=>item.key===key);
+    if(!group){group={key,entries:[]};groups.push(group);}
+    group.entries.push(entry);
+  });
+  document.getElementById('changelogGroups').innerHTML=groups.map(group=>`<section class="changelog-group"><h2 class="changelog-group-title">v${esc(group.key)}.x</h2>${group.entries.map(entry=>`<div class="changelog-entry"><div class="changelog-version">${esc(entry.version)}</div><div class="changelog-notes">${esc(entry.notes)}</div></div>`).join('')}</section>`).join('');
+}
+renderChangelog();
 
-const homePage=document.getElementById('homePage'),ridePage=document.getElementById('ridePage'),scooterPage=document.getElementById('scooterPage'),rideTrackerPage=document.getElementById('rideTrackerPage');
-function showView(view){homePage.hidden=view!=='home';ridePage.hidden=view!=='ride';scooterPage.hidden=view!=='scooter';rideTrackerPage.hidden=view!=='tracker';window.scrollTo({top:0,behavior:'smooth'});}
-document.getElementById('openRidePage').addEventListener('click',()=>showView('ride'));document.getElementById('openScooterPage').addEventListener('click',()=>showView('scooter'));document.getElementById('openRideTrackerPage').addEventListener('click',()=>{renderRideHistory();showView('tracker');});document.querySelectorAll('[data-go-home]').forEach(b=>b.addEventListener('click',()=>showView('home')));
+const homePage=document.getElementById('homePage'),ridePage=document.getElementById('ridePage'),scooterPage=document.getElementById('scooterPage'),rideTrackerPage=document.getElementById('rideTrackerPage'),changelogPage=document.getElementById('changelogPage');
+function showView(view){homePage.hidden=view!=='home';ridePage.hidden=view!=='ride';scooterPage.hidden=view!=='scooter';rideTrackerPage.hidden=view!=='tracker';changelogPage.hidden=view!=='changelog';window.scrollTo({top:0,behavior:'smooth'});}
+document.getElementById('openRidePage').addEventListener('click',()=>showView('ride'));document.getElementById('openScooterPage').addEventListener('click',()=>showView('scooter'));document.getElementById('openRideTrackerPage').addEventListener('click',()=>{renderRideHistory();showView('tracker');});document.getElementById('versionBadge').addEventListener('click',()=>showView('changelog'));document.querySelectorAll('[data-go-home]').forEach(b=>b.addEventListener('click',()=>showView('home')));
 
 const LS_PROFILE='scooterApp_profile',LS_RIDES='scooterRideHistory_v1';
 function loadProfile(){try{const raw=localStorage.getItem(LS_PROFILE);return raw?JSON.parse(raw):null;}catch(e){return null;}}function saveProfile(o){localStorage.setItem(LS_PROFILE,JSON.stringify(o));}function clearProfileStorage(){localStorage.removeItem(LS_PROFILE);}
