@@ -1,4 +1,4 @@
-const CACHE_NAME = "scooter-battery-app-v12";
+const CACHE_NAME = "scooter-battery-app-v13";
 
 const ASSETS = [
   "./index.html",
